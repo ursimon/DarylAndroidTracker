@@ -5,6 +5,8 @@ import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.ContentViewEvent;
 import com.crashlytics.android.answers.CustomEvent;
+import com.crashlytics.android.answers.LevelEndEvent;
+import com.crashlytics.android.answers.LevelStartEvent;
 
 import java.util.Map;
 
@@ -14,9 +16,23 @@ public class CrashlyticsLogTracker implements TrackerAdapter {
         Answers.getInstance().logContentView(new ContentViewEvent().putContentName(name));
     }
 
+    public final static String LEVEL_START = "LevelStart";
+    public final static String LEVEL_END = "LevelEnd";
+
     @Override
     public void logEvent(Map<String, Object> eventData) {
         final String name = (String) eventData.get(Constants.EVENT_NAME);
+
+        if (name.equals(LEVEL_START)) {
+            Answers.getInstance().logLevelStart(new LevelStartEvent());
+            return;
+        }
+
+        if (name.equals(LEVEL_END)) {
+            Answers.getInstance().logLevelEnd(new LevelEndEvent());
+            return;
+        }
+
         CustomEvent customEvent = new CustomEvent(name);
         final String category = (String) eventData.get(Constants.EVENT_CATEGORY);
         if (category != null) {
