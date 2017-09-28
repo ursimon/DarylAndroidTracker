@@ -23,12 +23,12 @@ public class CrashlyticsLogTracker implements TrackerAdapter {
     public void logEvent(Map<String, Object> eventData) {
         final String name = (String) eventData.get(Constants.EVENT_NAME);
 
-        if (name.equals(LEVEL_START)) {
+        if (LEVEL_START.equals(name)) {
             Answers.getInstance().logLevelStart(new LevelStartEvent());
             return;
         }
 
-        if (name.equals(LEVEL_END)) {
+        if (LEVEL_END.equals(name)) {
             Answers.getInstance().logLevelEnd(new LevelEndEvent());
             return;
         }
