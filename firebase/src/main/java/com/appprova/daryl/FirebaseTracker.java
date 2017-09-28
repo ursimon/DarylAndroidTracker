@@ -17,10 +17,11 @@ public class FirebaseTracker implements TrackerAdapter {
 
     @Override
     public void logPageView(final String name) {
-        final Bundle bundle = new Bundle();
-        bundle.putString("pageName", sanitize(name));
-        this.tracker.logEvent("pageView", bundle);
-        FirebaseCrash.log("pageView: " + sanitize(name));
+//        final Bundle bundle = new Bundle();
+//        bundle.putString("pageName", sanitize(name));
+//        this.tracker.logEvent("pageView", bundle);
+//        FirebaseCrash.log("pageView: " + sanitize(name));
+        // TODO: 29.09.2017 track this manually via setCurrentScreen 
     }
 
     @Override
