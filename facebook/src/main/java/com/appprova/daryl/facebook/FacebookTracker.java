@@ -16,9 +16,11 @@ public class FacebookTracker implements TrackerAdapter {
         this.logger = logger;
     }
 
+    private final String SCREEN_PREFIX = "SCREEN: ";
+
     @Override
     public void logPageView(String name) {
-        logger.logEvent(name);
+        logger.logEvent(SCREEN_PREFIX + name);
     }
 
     @Override
