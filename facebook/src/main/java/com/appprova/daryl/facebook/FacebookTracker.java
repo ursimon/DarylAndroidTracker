@@ -26,12 +26,14 @@ public class FacebookTracker implements TrackerAdapter {
     @Override
     public void logEvent(Map<String, Object> eventData) {
         String eventName = (String) eventData.get(Constants.EVENT_NAME);
-        eventData.remove(Constants.EVENT_NAME);
+        //eventData.remove(Constants.EVENT_NAME);
 
         Bundle bundle = new Bundle();
         for (Map.Entry<String, ?> entry : eventData.entrySet()) {
             if (entry.getValue() != null) {
-                bundle.putString(entry.getKey(), entry.getValue().toString());
+                if (!entry.getKey().equals(Constants.EVENT_NAME)) {
+                    bundle.putString(entry.getKey(), entry.getValue().toString());
+                }
             }
         }
 
