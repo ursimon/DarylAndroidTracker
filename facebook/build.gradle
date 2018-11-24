@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'jacoco-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
@@ -26,7 +25,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '26.0.3'
 }
 
 dependencies {
